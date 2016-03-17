@@ -1,0 +1,133 @@
+<div class="row">
+	<div class="columns small-9 divContainer" id="rightSide">
+		<h2>AngularJS——第一章：数据绑定</h2>
+		<article>本章介绍的内容有：</article>
+		<article class="tab-1">1.如何构建一个AngularJS应用</article>
+		<article class="tab-1">2.数据模型双向绑定的实际运用</article>
+		<article class="tab-1">3.脏监测</article>
+		<div class="hrLine2">
+		</div>
+	</div>
+	<div class="columns small-3 divContainer" id="rightSide">
+
+	</div>
+</div>
+<div class="row">
+	<div class="columns small-9 divContainer" id="rightSide">
+		<h3 id="ng1.1">【壹】-建立第一个AngularJS应用</h3>
+		<article>写段Hello World咒语是开始学习AngularJS的最基本途径，让我们从一段简单得不能再简单的HTML开始吧。随着学习的深入，我们会逐渐深入到AngularJS的内部原理中。现在，让我们看看咒语怎么写：</article>
+	</div>
+	<div class="columns small-3 divContainer" id="rightSide">
+	</div>
+</div>
+<div class="row">
+	<div class="columns small-9 divContainer" id="rightSide">
+		<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html ng-app&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;head&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Simple app&lt;/title&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/head&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input ng-model="name" type="text" placeholder="Your name"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1>Hello {{ name }}&lt;/h1&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+		<br />
+		<article>虽然这个例子不怎么有趣，但它展示了AngularJS最基本也最令人印象深刻的功能之一：数据绑定。让我们来分析一下这段咒语：
+		</article>
+		<article class="tab-1">
+			1.在&lt;html&gt;标签内，我们看到了“ng-app”这个属性。首先，以ng开头的属性都是AngularJS提供的属性。ng-app定义一个 AngularJS 应用程序，在例子中，我们知道咒语将整个html作为一个AngularJS应用。
+		</article>
+		<article class="tab-1">
+			2.在&lt;head&gt;标签内，我们引入了AngularJS框架文件。这样，我们就可以使用所有AngularJS所带来的各种特性和函数。
+		</article>
+		<article class="tab-1">
+			3.在页面的主体内，我们添加了一个文本框，并且为它添加了“ng-model”属性，并为它起名“name”。这个文本框就是一个数据模型，对于MVC框架的M层。而下放有个{{name}}，通过2个大括号括起来的是AngularJS的表达式，可以将数据模型的内容显示出来，对应MVC的V层。
+		</article>
+		<article>这个例子的运行结果，可以让文本框的内容显示在下放。无论你输入什么，下放都会动态改变对应的值。这就形成了一个动态绑定。而我们还没开始写任何JS咒语。
+		</article>
+		<div class="hrLine1"></div>
+		<h3 id="ng1.2">【贰】-数据绑定</h3>
+		<article>在Rails等传统Web框架中，控制器将多个模型中的数据和模板组合在一起形成视图，并将其提供给用户，这个组合过程会产生一个单向视图。如果没有创建任何自定义的JavaScript组件，视图只会体现它渲染时模型暴露出的数据。（JSP，ASP，PHP……都是如此）
+		</article>
+		<article>AngularJS则采用了完全不同的解决方案。它创建实时模板来代替视图，而不是将数据合并进模板之后更新DOM。任何一个独立视图组件中的值都是动态替换的。这个功能可以说是AngularJS中最重要的功能之一，也是让我们只用10行代码，并且在没有任何JavaScirpt的情况下就可以写出Hello World的关键。
+		</article>
+		<article>自动数据绑定使我们可以将视图理解为模型状态的映射。当客户端的数据模型发生变化时，视图就能反映出这些变化，并且不需要写任何自定义的代码，它就可以工作。AngularJS会记录数据模型所包含的数据在任何特定时间点的值（在Hello World例子中就是name的值），而不是原始值。
+		</article>
+		<article>你可以稍微修改一下咒语，修改部分如下：</article>
+		<pre><code class="html">&lt;body&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;input ng-model="name" type="text" placeholder="Your name"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;input ng-model="name" type="text" placeholder="你的名字"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1>{{ name }}&lt;/h1&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1 ng-bind="name">&lt;/h1&gt;
+&lt;/body&gt;</code></pre>
+		<article>我们能够看到我们只需输入一个输入框，另一个输入框也会同步更新内容。我们也可以不使用{{}}表达式，使用ng-bind指令进行绑定。迄今为止，我们还没有使用一句js咒语就完成了这个奇幻的功能。其中的关键就在于变量name，在这里，变量name充当了数据模型的角色，输入框的数据变更会同步到模型上，然后再分发给绑定到这个模型的其他页面元素。</article>
+		<div class="hrLine1">
+		</div>
+	</div>
+	<div class="columns small-3 divContainer" id="rightSide">
+		<p class="tips">这段咒语为了方便展示第一个核心概念，我们并没有用最佳方式编写控制器。这是一处我们不鼓励将示例代码应用在实际生产中，而只作为学习范例的地方。</p>
+		<p class="tips">对于任何一个AngularJS应用来说，ng-app属性是必须存在的，只有声明了ng-app，AngularJS才会知道这个标签及里面的全部内容，属于一个应用。你可以试着删除ng-app属性，你会看到动态绑定失效。</p>
+		<p class="tips">一个项目可以存在多个ng-app属性的声明，但是AngularJS只会自动识别第一个ng-app，其他的ng-app需要手动加载，具体方式会在后续章节介绍。</p>
+		<p class="tips">{{}}声明了一个表达式，然后很多时候使用{{}}来声明表达式的框架、模板引擎很多，如果同时使用了其他同样使用{{}}作为声明的框架、模板引擎，会造成解析的冲突，一个合理的方式是改变声明表达式的方式。具体方式也会在后续章节介绍。</p>
+	</div>
+</div>
+<div class="row">
+	<div class="columns small-9 divContainer" id="rightSide">
+		<h3 id="ng1.3">【叁】-作用域$scope</h3>
+		<article>我们要变出一个每秒走一步的时钟，并更新clock变量上的数据：</article>
+		<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html ng-app&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;head&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Simple app&lt;/title&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/head&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div ng-controller="MyController"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1>现在时间：{{ clock }}&lt;/h1&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/body&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function MyController($scope, $timeout) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var updateClock = function() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$scope.clock = new Date();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$timeout(function() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateClock();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}, 1000);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateClock();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
+	</div>
+	<div class="columns small-3 divContainer" id="rightSide">
+	</div>
+</div>
+<div class="row">
+	<div class="columns small-9 divContainer" id="rightSide">
+
+	</div>
+	<div class="columns small-3 divContainer" id="rightSide">
+	</div>
+</div>
+<div class="row">
+	<div class="columns small-9 divContainer" id="rightSide">
+
+	</div>
+	<div class="columns small-3 divContainer" id="rightSide">
+	</div>
+</div>
+
+<script>
+	$(document).ready(function() {
+		$('pre code').each(function(i, block) {
+			hljs.highlightBlock(block);
+			hljs.lineNumbersBlock(block);
+		});
+	});
+</script>

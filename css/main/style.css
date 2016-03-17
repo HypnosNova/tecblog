@@ -1,0 +1,146 @@
+@font-face {
+    /* font-properties */
+    font-family: aaa;
+    src:url('../../font/bbb.ttf')
+}
+@font-face {
+    /* font-properties */
+    font-family: bbb;
+    src:url('../../font/b.ttf')
+}
+body {
+	background-image: url(../../img/bg.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+	cursor: url('../../img/mouse.ico'), default;
+	overflow-y: scroll;
+}
+
+
+a {
+	cursor: pointer;
+	cursor: url('../../img/pointer.ico'), pointer!important;
+}
+
+.divContainer {
+	/*background-color: rgba(0,0,0,0.1);*/
+	height: 100%;
+}
+
+.view {
+	height: 100%;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.row {
+	max-width: 100%;
+}
+
+h1 {
+	font-family: "微软雅黑";
+	text-align: center;
+	font-weight: 200;
+}
+
+.bookContainer {
+	text-align: center;
+}
+
+.pageImg {
+	background:#bbb
+}
+
+.marginRow {
+	height: 80px;
+}
+
+h2 {
+	font-size: 32px;
+	font-family: "aaa";
+	color: #000;
+	font-weight: 800;
+}
+
+h3 {
+	font-size: 24px;
+	font-family: "aaa";
+	color: #000;
+	font-weight: 800;
+}
+
+h4 {
+	font-size: 20px;
+	font-family: "aaa";
+	color: #000;
+	font-weight:600
+}
+
+.tipsContainer {
+	display: table-cell;
+    vertical-align: middle;
+}
+
+.hljs-line-numbers {
+    text-align: right;
+    border-right: 1px solid #ccc;
+    color: #999;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+article {
+	font-size: 20px;
+	font-family: "aaa" ;
+	color: #000;
+	line-height: 30px;
+	margin-bottom: 10px;
+	text-indent: 2em;
+}
+
+.tips {
+	width: 90%;
+	border-radius: 15px;
+	padding: 12px;
+	border: 2px solid #000;
+	font-size: 16px!important;
+	line-height: 24px;
+	font-family: aaa;
+}
+
+.tab-1{
+	font-size: 16px;
+	margin-left: 5%;
+	width: 90%;
+	line-height: 24px;
+	margin-bottom: 8px;
+}
+.tab-2{
+	font-size: 16px;
+	margin-left: 10%;
+	width: 80%;
+	line-height: 24px;
+	margin-bottom: 8px;
+}
+.hrLine2{
+	border-bottom: 2px solid #666;
+	height: 20px;
+	margin-bottom: 15px;
+}
+.hrLine1{
+	border-bottom: 1px solid #666;
+	height: 20px;
+	margin-bottom: 15px;
+}
+.center{
+	text-align: center;
+	width: 100%;
+}
+span{
+	text-indent: 0;
+}

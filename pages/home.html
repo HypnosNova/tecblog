@@ -1,0 +1,115 @@
+<div class="columns small-10 divContainer" id="rightSide">
+	<div class="row">
+		<h1>青龍會<br><br></h1>
+	</div>
+	<div class="row">
+		<div class="columns small-4 bookContainer">
+			<figure class='book'>
+				<!-- Front -->
+				<ul class='hardcover_front'>
+					<li>
+						<img src="img/angularCover.jpg" alt="" width="100%" height="100%">
+					</li>
+					<li><img src="img/angularc.jpg" alt="" width="100%" height="100%"></li>
+				</ul>
+				<!-- Pages -->
+				<ul class='page'>
+					<li class="pageImg"></li>
+					<li class="pageImg">
+						<a class="btn" onclick="goTutorial('angular')">进入</a>
+					</li>
+					<li class="pageImg"></li>
+					<li class="pageImg"></li>
+					<li class="pageImg"></li>
+				</ul>
+				<!-- Back -->
+				<ul class='hardcover_back'>
+					<li>
+						<img src="img/angularc.jpg" alt="" width="100%" height="100%">
+					</li>
+					<li><img src="img/angularc.jpg" alt="" width="100%" height="100%"></li>
+				</ul>
+				<ul class='book_spine'>
+					<li></li>
+					<li></li>
+				</ul>
+			</figure>
+		</div>
+		<div class="columns small-4 bookContainer">
+			<figure class='book'>
+				<!-- Front -->
+				<ul class='hardcover_front'>
+					<li>
+						<img src="img/jsCover.jpg" alt="" width="100%" height="100%">
+					</li>
+					<li><img src="img/jsc.jpg" alt="" width="100%" height="100%"></li>
+				</ul>
+				<!-- Pages -->
+				<ul class='page'>
+					<li class="pageImg"></li>
+					<li class="pageImg">
+						<a class="btn"  onclick="goTutorial('js')">进入</a>
+					</li>
+					<li class="pageImg"></li>
+					<li class="pageImg"></li>
+					<li class="pageImg"></li>
+				</ul>
+				<!-- Back -->
+				<ul class='hardcover_back'>
+					<li>
+						<img src="img/jsc.jpg" alt="" width="100%" height="100%">
+					</li>
+					<li><img src="img/jsc.jpg" alt="" width="100%" height="100%"></li>
+				</ul>
+				<ul class='book_spine'>
+					<li></li>
+					<li></li>
+				</ul>
+			</figure>
+		</div>
+		<div class="columns small-4 bookContainer">
+			<figure class='book'>
+				<!-- Front -->
+				<ul class='hardcover_front'>
+					<li>
+						<img src="img/promoteCover.jpg" alt="" width="100%" height="100%">
+					</li>
+					<li><img src="img/promotec.jpg" alt="" width="100%" height="100%"></li>
+				</ul>
+				<!-- Pages -->
+				<ul class='page'>
+					<li class="pageImg"></li>
+					<li class="pageImg">
+						<a class="btn"  onclick="goTutorial('promote')">进入</a>
+					</li>
+					<li class="pageImg"></li>
+					<li class="pageImg"></li>
+					<li class="pageImg"></li>
+				</ul>
+				<!-- Back -->
+				<ul class='hardcover_back'>
+					<li>
+						<img src="img/promotec.jpg" alt="" width="100%" height="100%">
+					</li>
+					<li><img src="img/promotec.jpg" alt="" width="100%" height="100%"></li>
+				</ul>
+				<ul class='book_spine'>
+					<li></li>
+					<li></li>
+				</ul>
+			</figure>
+		</div>
+	</div>
+</div>
+<div class="columns small-2 divContainer" id="rightSide">
+	<div class="row">
+
+	</div>
+</div>
+
+<script>
+	function goTutorial(tname) {
+		changePage(tname+"/1");
+		changeMenu(tname);
+	}
+</script>
