@@ -1,0 +1,53 @@
+<div style="position: fixed;margin: 0;width: 15%;">
+	<h3 onclick="goHome()" style="font-family: aaa;">返回首页</h3>
+	<div id="wrapper-250">
+		<ul class="accordion">
+			<li id="one" page="promote/1" class="rootTitle"> <a href="#ng0.1">序章</a>
+			</li>
+			<li id="two" page="promote/2" class="rootTitle"> <a href="#two">浏览器工作原理</a>
+				<ul class="sub-menu">
+					<li><a href="#ng1.1" class="menuRef">浏览器是什么</a></li>
+					<li><a href="#ng1.2" class="menuRef">渲染引擎</a></li>
+					<li><a href="#ng1.3" class="menuRef">解析与DOM树构建</a></li>
+				</ul>
+			</li>
+			<li id="three" page="promote/2" class="rootTitle"> <a href="#three">V8引擎原理</a>
+				<ul class="sub-menu">
+					<li><a href="#ng1.1" class="menuRef">Javascript是什么</a></li>
+					<li><a href="#ng1.2" class="menuRef">Javascript历史</a></li>
+					<li><a href="#ng1.3" class="menuRef">ECMAScript</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		// Store variables
+		var accordion_head = $('.accordion > li > a'),
+			accordion_body = $('.accordion li > .sub-menu');
+		// Open the first tab on load
+		accordion_head.first().addClass('active').next().slideDown('normal');
+		// Click function
+		accordion_head.on('click', function(event) {
+			// Disable header links
+			event.preventDefault();
+			// Show and hide the tabs on click
+			if ($(this).attr('class') != 'active') {
+				accordion_body.slideUp('normal');
+				$(this).next().stop(true, true).slideToggle('normal');
+				accordion_head.removeClass('active');
+				$(this).addClass('active');
+			}
+		});
+		$(".rootTitle").bind("click", function() {
+			if (storage.historyPage != $(this).attr("page")) {
+				changePage($(this).attr("page"));
+				storage.historyPage = $(this).attr("page");
+				console.log($(this).attr("page"));
+			} else {
+				console.log($(this).attr("page") + "---------");
+			}
+		});
+	});
+</script>

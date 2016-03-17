@@ -1,0 +1,52 @@
+<div style="position: fixed;margin: 0;width: 15%;">
+	<h3 onclick="goHome()" style="font-family: aaa;">返回首页</h3>
+	<div id="wrapper-250">
+		<ul class="accordion">
+			<li id="one" page="angular/1" class="rootTitle"> <a href="#one">序章</a>
+				<ul class="sub-menu">
+					<li><a href="#ng0.1">AngularJS是什么</a></li>
+					<li><a href="#ng0.2">它带来什么改变</a></li>
+					<li><a href="#ng0.3">它擅长什么</a></li>
+				</ul>
+			</li>
+			<li id="two" page="angular/2" class="rootTitle"> <a href="#two">数据绑定</a>
+				<ul class="sub-menu">
+					<li><a href="#ng1.1">第一个AngularJS应用</a></li>
+					<li><a href="#ng1.2">数据绑定</a></li>
+					<li><a href="#ng1.3">作用域$scope</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		// Store variables
+		var accordion_head = $('.accordion > li > a'),
+			accordion_body = $('.accordion li > .sub-menu');
+		// Open the first tab on load
+		accordion_head.first().addClass('active').next().slideDown('normal');
+		// Click function
+		accordion_head.on('click', function(event) {
+			// Disable header links
+			event.preventDefault();
+			// Show and hide the tabs on click
+			if ($(this).attr('class') != 'active') {
+				accordion_body.slideUp('normal');
+				$(this).next().stop(true, true).slideToggle('normal');
+				accordion_head.removeClass('active');
+				$(this).addClass('active');
+			}
+		});
+		$(".rootTitle").bind("click", function() {
+			if (storage.historyPage != $(this).attr("page")) {
+				changePage($(this).attr("page"));
+				storage.historyPage = $(this).attr("page");
+				console.log($(this).attr("page"));
+			} else {
+				console.log($(this).attr("page") + "---------");
+			}
+		})
+	});
+</script>

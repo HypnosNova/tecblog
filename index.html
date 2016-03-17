@@ -1,0 +1,99 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>技术博客</title>
+		<link rel="stylesheet" href="css/foundation.min.css" />
+		<link rel="stylesheet" type="text/css" href="menu/css/menustyle.css" />
+		<link rel="stylesheet" type="text/css" href="css/book.css" />
+		<link rel="stylesheet" type="text/css" href="css/main/scroll.css" />
+		<link rel="stylesheet" type="text/css" href="css/hint.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/hightlight/agate.css" />
+		<link rel="stylesheet" type="text/css" href="css/main/style.css" />
+	</head>
+
+	<body>
+		<div class="row">
+			<br>
+		</div>
+		<div class="row" id="mainView">
+			<div class="columns small-2 divContainer" id="leftSide">
+				<div class="row">
+					&nbsp;
+				</div>
+			</div>
+			<div class="columns small-10 " id="mainBody">
+
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery.js"></script>
+	<script src="js/jjs_menu_min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/foundation.min.js"></script>
+	<script src="js/main/init.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/main/storage.js"></script>
+	<script src="js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/highlightjs-line-numbers.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/scrollto.js" ></script>
+	<script type="text/javascript">
+		function myBrowser() {
+			var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+			
+			var isOpera = userAgent.indexOf("Opera") > -1; //判断是否Opera浏览器
+			var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera; //判断是否IE浏览器
+			var isFF = userAgent.indexOf("Firefox") > -1; //判断是否Firefox浏览器
+			var isSafari = userAgent.indexOf("Safari") > -1; //判断是否Safari浏览器
+			var isChrome = userAgent.indexOf("Chrome") > -1; //判断是否Safari浏览器
+			if (isIE) {
+				var IE5 = IE55 = IE6 = IE7 = IE8 =IE9 =IE10 = false;
+				var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+				reIE.test(userAgent);
+				var fIEVersion = parseFloat(RegExp["$1"]);
+				IE55 = fIEVersion == 5.5;
+				IE6 = fIEVersion == 6.0;
+				IE7 = fIEVersion == 7.0;
+				IE8 = fIEVersion == 8.0;
+				IE9 = fIEVersion == 9.0;
+				IE10 = fIEVersion == 10.0;
+				if (IE55) {
+					return false;
+				}
+				if (IE6) {
+					return false;
+				}
+				if (IE7) {
+					return false;
+				}
+				if (IE8) {
+					return false;
+				}
+				if (IE9) {
+					return false;
+				}
+				if (IE10) {
+					return false;
+				}
+			} //isIE end
+			if (isFF) {
+				return true;
+			}
+			if (isOpera) {
+				return true;
+			}
+			if (isSafari) {
+				return true;
+			}
+			if (isChrome) {
+				return true;
+			}
+		} //myBrowser() end
+		//以下是调用上面的函数
+		if(!myBrowser()){
+			alert();
+		}
+		
+	</script>
+
+</html>
